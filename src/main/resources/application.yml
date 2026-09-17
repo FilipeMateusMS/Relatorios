@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: relatorios
+  datasource:
+    url: jdbc:postgresql://localhost:5432/relatorios
+    username: postgres
+    password: postgres
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
