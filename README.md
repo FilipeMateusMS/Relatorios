@@ -14,7 +14,6 @@ API REST desenvolvida com Java 21 e Spring Boot para gerenciamento de clientes, 
 - Apache POI
 - OpenAPI / Swagger
 - Docker
-- JUnit 5 / Mockito
 
 ## Arquitetura
 
@@ -57,40 +56,99 @@ Swagger:
 http://localhost:8080/swagger-ui.html
 ```
 
-## Relatórios
+## Endpoints
 
-PDF:
+### Clientes
 
-```text
+| Método | Endpoint | Descrição |
+|---|---|---|
+| `POST` | `/clientes` | Cadastra um cliente |
+| `GET` | `/clientes` | Lista todos os clientes |
+| `GET` | `/clientes/{id}` | Busca um cliente por ID |
+| `PUT` | `/clientes/{id}` | Atualiza um cliente |
+| `DELETE` | `/clientes/{id}` | Remove um cliente |
+
+### Produtos
+
+| Método | Endpoint | Descrição |
+|---|---|---|
+| `POST` | `/produtos` | Cadastra um produto |
+| `GET` | `/produtos` | Lista todos os produtos |
+| `GET` | `/produtos/{id}` | Busca um produto por ID |
+| `PUT` | `/produtos/{id}` | Atualiza um produto |
+| `DELETE` | `/produtos/{id}` | Remove um produto |
+
+### Vendas
+
+| Método | Endpoint | Descrição |
+|---|---|---|
+| `POST` | `/vendas` | Cadastra uma venda |
+| `GET` | `/vendas` | Lista todas as vendas |
+| `GET` | `/vendas/{id}` | Busca uma venda por ID |
+| `PUT` | `/vendas/{id}` | Atualiza uma venda |
+| `DELETE` | `/vendas/{id}` | Remove uma venda |
+
+### Relatórios
+
+Os relatórios podem ser filtrados por período através dos parâmetros `inicio` e `fim`.
+
+#### Relatório de vendas em PDF
+
+```http
 GET /relatorios/vendas/pdf?inicio=2026-01-01T00:00:00&fim=2026-12-31T23:59:59
 ```
 
-Excel:
+Retorna o relatório de vendas em formato PDF.
 
-```text
+#### Relatório de vendas em Excel
+
+```http
 GET /relatorios/vendas/excel?inicio=2026-01-01T00:00:00&fim=2026-12-31T23:59:59
 ```
 
-Resumo:
+Retorna o relatório de vendas em formato XLSX.
 
-```text
+#### Resumo das vendas
+
+```http
 GET /relatorios/vendas/resumo?inicio=2026-01-01T00:00:00&fim=2026-12-31T23:59:59
 ```
 
-## CRUD
+Retorna o resumo das vendas do período, incluindo informações como quantidade de vendas e faturamento total.
 
-- `GET /clientes`
-- `POST /clientes`
-- `GET /clientes/{id}`
-- `PUT /clientes/{id}`
-- `DELETE /clientes/{id}`
-- `GET /produtos`
-- `POST /produtos`
-- `GET /produtos/{id}`
-- `PUT /produtos/{id}`
-- `DELETE /produtos/{id}`
-- `GET /vendas`
-- `POST /vendas`
-- `GET /vendas/{id}`
-- `PUT /vendas/{id}`
-- `DELETE /vendas/{id}`
+## Exemplo de criação de cliente
+
+```http
+POST /clientes
+Content-Type: application/json
+
+{
+  "nmCliente": "João da Silva",
+  "email": "joao@email.com"
+}
+```
+
+## Exemplo de criação de produto
+
+```http
+POST /produtos
+Content-Type: application/json
+
+{
+  "nmProduto": "Notebook",
+  "vlPreco": 3500.00
+}
+```
+
+## Exemplo de criação de venda
+
+```http
+POST /vendas
+Content-Type: application/json
+
+{
+  "cdCliente": 1,
+  "cdProduto": 1,
+  "qtQuantidade": 2
+}
+```
