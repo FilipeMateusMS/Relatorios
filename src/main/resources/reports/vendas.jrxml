@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vendas" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="30" bottomMargin="30">
+    <field name="cdVenda" class="java.lang.Long"/>
+    <field name="cliente" class="java.lang.String"/>
+    <field name="produto" class="java.lang.String"/>
+    <field name="quantidade" class="java.lang.Integer"/>
+    <field name="total" class="java.math.BigDecimal"/>
+    <field name="data" class="java.lang.String"/>
+    <title><band height="45"><staticText><reportElement x="0" y="0" width="535" height="30"/><text><![CDATA[RELATÓRIO DE VENDAS]]></text></staticText></band></title>
+    <columnHeader><band height="25">
+        <staticText><reportElement x="0" y="0" width="45" height="20"/><text><![CDATA[Cód.]]></text></staticText>
+        <staticText><reportElement x="45" y="0" width="120" height="20"/><text><![CDATA[Cliente]]></text></staticText>
+        <staticText><reportElement x="165" y="0" width="130" height="20"/><text><![CDATA[Produto]]></text></staticText>
+        <staticText><reportElement x="295" y="0" width="70" height="20"/><text><![CDATA[Qtd.]]></text></staticText>
+        <staticText><reportElement x="365" y="0" width="80" height="20"/><text><![CDATA[Total]]></text></staticText>
+        <staticText><reportElement x="445" y="0" width="90" height="20"/><text><![CDATA[Data]]></text></staticText>
+    </band></columnHeader>
+    <detail><band height="22">
+        <textField><reportElement x="0" y="0" width="45" height="18"/><textFieldExpression><![CDATA[$F{cdVenda}]]></textFieldExpression></textField>
+        <textField><reportElement x="45" y="0" width="120" height="18"/><textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression></textField>
+        <textField><reportElement x="165" y="0" width="130" height="18"/><textFieldExpression><![CDATA[$F{produto}]]></textFieldExpression></textField>
+        <textField><reportElement x="295" y="0" width="70" height="18"/><textFieldExpression><![CDATA[$F{quantidade}]]></textFieldExpression></textField>
+        <textField pattern="#,##0.00"><reportElement x="365" y="0" width="80" height="18"/><textFieldExpression><![CDATA[$F{total}]]></textFieldExpression></textField>
+        <textField><reportElement x="445" y="0" width="90" height="18"/><textFieldExpression><![CDATA[$F{data}]]></textFieldExpression></textField>
+    </band></detail>
+</jasperReport>
