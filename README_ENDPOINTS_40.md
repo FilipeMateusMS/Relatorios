@@ -1,0 +1,3 @@
+# Endpoints
+
+Consulte README.md.
